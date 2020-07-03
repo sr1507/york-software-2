@@ -9,7 +9,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 
-public class TSPGraphTest {
+public class GreedyTest {
 
     private final int[][] singlePathMatrix = new int[][]{{0, 3, 13, 21}, {3, 0, 0, 5}, {13, 0, 0, 8}, {21, 5, 8, 0}};
     private final String[] singlePathCities = new String[]{"A", "B", "C", "D"};
@@ -18,49 +18,11 @@ public class TSPGraphTest {
     private final String[] multiPathCities = new String[]{"A", "B", "C", "D", "E", "F"};
 
     @Test
-    public void testValidMatrix() {
-        TSPGraph tspGraph = new TSPGraph(singlePathCities, singlePathMatrix);
-        assertThat(tspGraph.isValidMatrix(singlePathCities, singlePathMatrix), equalTo(true));
-    }
-
-    @Test
-    public void testSinglePathBrute() {
-
-        TSPGraph tspGraph = new TSPGraph(singlePathCities, singlePathMatrix);
-        List<String> expected = Arrays.asList("C", "D", "B", "A");
-        assertEquals(expected, tspGraph.getShortestRoundTripBrute());
-    }
-
-    @Test
-    public void testSinglePathBackTrack() {
-
-        TSPGraph tspGraph = new TSPGraph(singlePathCities, singlePathMatrix);
-        List<String> expected = Arrays.asList("B", "A", "C", "D");
-        assertEquals(expected, tspGraph.getShortestRoundTripBacktrack());
-    }
-
-    @Test
     public void testSinglePathGreedy() {
 
         TSPGraph tspGraph = new TSPGraph(singlePathCities, singlePathMatrix);
         List<String> expected = Arrays.asList("D", "B", "A", "C");
-        assertEquals(expected, tspGraph.getGreedyRoundTrip("D"));
-    }
-
-    @Test
-    public void testMultiPathBrute() {
-
-        TSPGraph tspGraph = new TSPGraph(multiPathCities, multiPathMatrix);
-        List<String> expected = Arrays.asList("A", "E", "D", "F", "B", "C");
-        assertEquals(expected, tspGraph.getShortestRoundTripBrute());
-    }
-
-    @Test
-    public void testMultiPathBackTrack() {
-
-        TSPGraph tspGraph = new TSPGraph(multiPathCities, multiPathMatrix);
-        List<String> expected = Arrays.asList("A", "C", "B", "F", "D", "E");
-        assertEquals(expected, tspGraph.getShortestRoundTripBacktrack());
+        assertEquals(expected, new Greedy(tspGraph).getRoundTrip("D"));
     }
 
     @Test
@@ -68,6 +30,6 @@ public class TSPGraphTest {
 
         TSPGraph tspGraph = new TSPGraph(multiPathCities, multiPathMatrix);
         List<String> expected = Arrays.asList("A", "B", "D", "E", "F", "C");
-        assertEquals(expected, tspGraph.getGreedyRoundTrip("A"));
+        assertEquals(expected, new Greedy(tspGraph).getRoundTrip("A"));
     }
 }
