@@ -1,4 +1,4 @@
-package tsp;
+package tsp.activity1;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;

@@ -1,4 +1,4 @@
-package tsp;
+package tsp.activity3;
 
 import org.junit.Test;
 

@@ -3,3 +3,5 @@ activity-1/lib/
 *.iml
 activity-3/.idea/
 activity-3/target/
+.idea/
+target/

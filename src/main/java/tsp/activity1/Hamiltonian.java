@@ -1,4 +1,4 @@
-package tsp;
+package tsp.activity1;
 
 import java.util.Set;
 import java.util.List;

@@ -1,9 +1,9 @@
-package tsp;
+package tsp.activity3;
+
+import tsp.activity1.Hamiltonian;
+import tsp.activity1.IntegerPermutation;
 
 import java.util.*;
-
-import tsp.Hamiltonian;
-import tsp.IntegerPermutation;
 
 public class TSPGraph {
 
